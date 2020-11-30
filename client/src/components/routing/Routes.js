@@ -4,10 +4,6 @@ import Register from '../auth/Register';
 import Login from '../auth/Login';
 import Alert from '../layout/Alert';
 import Dashboard from '../dashboard/Dashboard';
-import ProfileForm from '../profile-forms/ProfileForm';
-import AddEducation from '../profile-forms/AddEducation';
-import Profiles from '../profiles/Profiles';
-import Profile from '../profile/Profile';
 
 import NotFound from '../layout/NotFound';
 import PrivateRoute from '../routing/PrivateRoute';
