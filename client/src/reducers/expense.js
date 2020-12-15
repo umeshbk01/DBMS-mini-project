@@ -3,6 +3,7 @@ import {
     REMOVE_TRANSACTION,
     ADD_EXPENSE,
     MONTH_PREVIEW,
+    GET_EXPENSES,
     GET_ERRORS
   } from "../actions/types";
   
@@ -16,16 +17,22 @@ import {
   
   export default function(state = initialState, action) {
       const { type, payload } = action
-    switch (action.type) {
+    switch (type) {
       case SET_EXPENSES:
         return {
           ...state,
-          expenses: action.payload
+          expenses: payload
+        };
+      case GET_EXPENSES:
+        return {
+          ...state,
+          expenses: payload,
+          loading: false
         };
       case ADD_EXPENSE:
         return {
           ...state,
-          expenses: [...state.expenses, action.payload]
+          expenses: [...state.expenses, payload]
         };
       case REMOVE_TRANSACTION:
         return {

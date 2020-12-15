@@ -3,9 +3,10 @@ import {
     GET_ERRORS,
     REMOVE_TRANSACTION,
     ADD_EXPENSE,
-    MONTH_PREVIEW
+    MONTH_PREVIEW,
+    GET_EXPENSES
   } from "./types";
-  import axios from "axios";
+
   import api from '../utils/api';
   import { setAlert } from './alert';
   
@@ -16,6 +17,22 @@ import {
     };
   };
  
+  export const getExpenses = id => async dispatch => {
+    try {
+      const res = await api.get(`/expense/all/${id}`);
+
+      dispatch({
+        type: GET_EXPENSES,
+        payload: res.data
+      });
+    } catch (err) {
+      dispatch({
+        type: GET_ERRORS,
+        payload: { msg: err.response.statusText, status: err.response.status }
+      });
+    }
+  }
+
   export const addExpense = transaction => async dispatch => {
     try {
         const res = await api.post('/expense', transaction);

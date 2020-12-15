@@ -22,6 +22,16 @@ router.get('/', auth, async (req, res) => {
     }
 })
 
+router.get('/all/:id', auth, async (req, res) => {
+  try {
+     const expenses = await Expense.find({ user: req.params.id }).sort({ date: -1 });
+     res.json(expenses);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+})
+
 router.post('/', auth, async (req, res) =>{
     try {
         const user = await User.findById(req.user.id).select('-password');
