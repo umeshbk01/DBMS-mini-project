@@ -5,6 +5,7 @@ const User = require('./../../models/User');
 const auth = require('./../../middleware/auth');
 const checkObjectId = require('../../middleware/checkObjectId');
 const mongoose = require('mongoose');
+const Profile = require('../../models/Profile');
 
 
 router.get('/', auth, async (req, res) => {
@@ -22,10 +23,11 @@ router.get('/', auth, async (req, res) => {
     }
 })
 
-router.get('/all/:id', auth, async (req, res) => {
+router.get('/all', auth, async (req, res) => {
   try {
-     const expenses = await Expense.find({ user: req.params.id }).sort({ date: -1 });
-     res.json(expenses);
+     const expenses = await Expense.find({ user: req.user.id }).sort({ createdAt: -1 });
+    
+     return res.json(expenses);
   } catch (err) {
     console.error(err.message);
     res.status(500).send('Server Error');
@@ -51,16 +53,48 @@ router.post('/', auth, async (req, res) =>{
       }
 })
 
+router.put('/:id', [auth, checkObjectId('id')], async (req, res) => {
+  const {
+    category,
+    comment,
+    amount,
+    createdAt,
+  } = req.body;
+
+  const expenseFields = {
+    user: req.user.id,
+    category: category,
+    comment: comment,
+    amount: amount,
+    createdAt: createdAt,
+  };
+  try {
+  //  console.log(req.body._id); 
+    let expense = await Expense.findOneAndUpdate(
+      {_id: req.body._id},
+      { $set: expenseFields },
+      { new: true, upsert: true, setDefaultsOnInsert: true }
+    );
+    //console.log(expense);
+    return res.json(expense);
+
+
+  } catch (err) {
+    console.error(err.message);
+      return res.status(500).send('Server Error');
+  }
+})
 
 router.delete('/:id', [auth, checkObjectId('id')], async (req, res) => {
 try {
     const expense = await Expense.findById(req.params.id);
-
+    // console.log(expense);
+    // console.log(req.user.id);
     if(!expense){
         return res.status(404).json({ msg: 'Expense not found' });
     }
 
-    if(expense.user.toSring() !== req.user.id){
+    if(expense.user.toString() !== req.user.id.toString()){
         return res.status(401).json({ msg: 'User not authorized' });
     }
 

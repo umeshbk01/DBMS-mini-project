@@ -51,23 +51,15 @@ const AddExpense = ({ addExpense }) => {
                       <select name="category" value={category} onChange={onChange}>
                           <option>Please select the type of your expense</option>
                           <option value="Food">Food</option>
-                          <option value="Rent">Rent</option>
                           <option value="Loan/Emi">Loan or EMI</option>
-                          <option value="Automobile">Automobile</option>
-                          <option value="Entertainment">Entertainment</option>
-                          <option value="Clothing">Clothing</option>
-                          <option value="Healthcare">Healthcare</option>
                           <option value="Travel">Travel</option>
-                          <option value="Shopping">Shopping</option>
-                          <option value="Personal Care">Personal Care</option>
                           <option value="Investment">Investment</option>
-                          <option value="Gifts & donations">Gifts & Donations</option>
                           <option value="Bills & Utilities">Bills & Utilities</option>
                           <option value="Others">Others</option>
                       </select>
                   </div>
                   <div className="form-group">
-                      {/* <TextField id="amount" label="Amount" className="textField" value={amount} name="amount" onChange={onChange} margin="normal" /> */}
+                      
                       <input type="number" placeholder="Amount" name="amount" value={amount} onChange={onChange} />
                   </div>
                   <br/>

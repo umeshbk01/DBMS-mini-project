@@ -25,8 +25,7 @@ const ProfileSchema = new mongoose.Schema({
   },
   phoneno: {
     type: Number,
-    min: [10, 'Phone number should be 10 digits'],
-    max: [10, 'Phone number should be 10 digits']
+    min: [10, 'Phone number should be 10 digits']
   },
   education: [
     {
