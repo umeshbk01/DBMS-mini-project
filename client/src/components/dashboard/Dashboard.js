@@ -18,15 +18,21 @@ const Dashboard = ({
 
   return (
     <Fragment>
-      <h1 className="large text-primary">Dashboard</h1>
+      <div class= "bg-dash">
+        
+      </div>
+      <div class= "dash">
+    <h1>
       <p className="lead">
-        <i className="fas fa-user" /> Welcome {user && user.name}
+        <i className="fas fa-user" /> Welcome, {user && user.name}
       </p>
+      </h1>
+      </div>
       {profile !== null ? (
         <Fragment>
           <DashboardActions />
-         
-          {/* <Education education={profile.education} />  */}
+          {/* <Experience experience={profile.experience} />
+          <Education education={profile.education} /> */}
 
           
         </Fragment>
@@ -40,8 +46,8 @@ const Dashboard = ({
       )}
       <ExpenseOverview />
       <div className="my-2">
-            <button className="btn btn-danger" onClick={() => deleteAccount()} >
-              <i className="fas fa-user-minus" /> Delete My Account
+            <button className="btn btn-danger" >
+              <i className="fas fa-user-minus" /> Delete Account
             </button>
           </div>
     </Fragment>

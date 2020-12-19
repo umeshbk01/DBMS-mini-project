@@ -26,7 +26,7 @@ const Login = ({ login, isAuthenticated }) => {
 
   return (
     <Fragment>
-          <div class="container h-100">
+          <div className="container h-100">
 
 <div className="row h-100">
     <div className="card col-md-12 my-auto">
@@ -41,7 +41,7 @@ const Login = ({ login, isAuthenticated }) => {
                        </h2>
                 </div>
                 <div className="text-secondary w-100 text-center">
-                    <i>Don't share your passwords</i>
+                   
                 </div>
                 <div className="authpic"></div>
             </div>
@@ -49,7 +49,7 @@ const Login = ({ login, isAuthenticated }) => {
                 <div className="v-line"></div>
             </div>
             <div className="col-md-5 text-align">
-                <i className="fas fa-hand-holding-usd fa-7x" />
+                
 
                 <form className="form" onSubmit={onSubmit}>
         <div className="form-group">

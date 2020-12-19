@@ -56,15 +56,15 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
                        
                     </div>
                     <div className="text-secondary w-100 text-center">
-                        <i>Don't share your passwords</i>
+                       
                     </div>
                     <div className="authpic"></div>
                 </div>
                 <div className="col-md-1">
-                    <div className="line"></div>
+                   
                 </div>
                 <div className="col-md-5">
-                <i className="fas fa-hand-holding-usd fa-7x" />
+               
                 <form className="form" onSubmit={onSubmit}>
         <div className="form-group">
           <input
