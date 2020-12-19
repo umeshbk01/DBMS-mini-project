@@ -6,6 +6,7 @@ import Alert from '../layout/Alert';
 import Dashboard from '../dashboard/Dashboard';
 import ProfileForm from '../profile-forms/ProfileForm';
 import AddEducation from '../profile-forms/AddEducation';
+import Expenses from '../dashboard/Expenses';
 import Profiles from '../profiles/Profiles';
 import Profile from '../profile/Profile';
 
@@ -22,11 +23,12 @@ const Routes = props => {
         <Route exact path="/login" component={Login} />
         <PrivateRoute exact path="/dashboard" component={Dashboard} />
         <Route exact path="/profiles" component={Profiles} />
-        <Route exact path="/profile/:id" component={Profile} />
+        <PrivateRoute exact path="/profile/:id" component={Profile} />
         <PrivateRoute exact path="/create-profile" component={ProfileForm} />
         <PrivateRoute exact path="/edit-profile" component={ProfileForm} />
         <PrivateRoute exact path="/add-education" component={AddEducation} />
         <PrivateRoute exact path="/expenses/new" component={AddExpense} />
+        <PrivateRoute exact path="/expenses/all" component={Expenses} />
         <Route component={NotFound} />
       </Switch>
     </section>

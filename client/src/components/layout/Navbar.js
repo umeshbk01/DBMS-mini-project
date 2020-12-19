@@ -1,12 +1,19 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { logout } from '../../actions/auth';
+import { getProfileById } from '../../actions/profile';
 
-const Navbar = ({ auth: { isAuthenticated }, logout }) => {
+const Navbar = ({ getProfileById, auth: { isAuthenticated }, logout, profile: { id }, match }) => {
+  // useEffect(() => {
+  //   getProfileById(match.params.id);
+  // }, [getProfileById, match.params.id]);
   const authLinks = (
     <ul>
+    <li>
+      <Link to={`/profile/${id}`}>Profile</Link>
+    </li>
       <li>
         <Link to="/statistics">Stats</Link>
       </li>
@@ -55,12 +62,15 @@ const Navbar = ({ auth: { isAuthenticated }, logout }) => {
 };
 
 Navbar.propTypes = {
+  getProfileById: PropTypes.func.isRequired,
   logout: PropTypes.func.isRequired,
-  auth: PropTypes.object.isRequired
+  auth: PropTypes.object.isRequired,
+  profile: PropTypes.object.isRequired
 };
 
 const mapStateToProps = (state) => ({
-  auth: state.auth
+  auth: state.auth,
+  profile: state.profile
 });
 
-export default connect(mapStateToProps, { logout })(Navbar);
+export default connect(mapStateToProps, { logout, getProfileById })(Navbar);

@@ -4,6 +4,7 @@ import {
     ADD_EXPENSE,
     MONTH_PREVIEW,
     GET_EXPENSES,
+    UPDATE_EXPENSE,
     GET_ERRORS
   } from "../actions/types";
   
@@ -29,11 +30,22 @@ import {
           expenses: payload,
           loading: false
         };
+      
       case ADD_EXPENSE:
         return {
           ...state,
           expenses: [...state.expenses, payload]
         };
+      
+      case UPDATE_EXPENSE:
+        return {
+          ...state,
+          expenses: state.expenses.map(exp => 
+            exp._id === payload.id ? { exp: payload } : exp 
+            ),
+          loading: false
+        }
+      
       case REMOVE_TRANSACTION:
         return {
             ...state,

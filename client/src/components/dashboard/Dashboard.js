@@ -25,8 +25,8 @@ const Dashboard = ({
       {profile !== null ? (
         <Fragment>
           <DashboardActions />
-          {/* <Experience experience={profile.experience} />
-          <Education education={profile.education} /> */}
+         
+          {/* <Education education={profile.education} />  */}
 
           
         </Fragment>
@@ -40,7 +40,7 @@ const Dashboard = ({
       )}
       <ExpenseOverview />
       <div className="my-2">
-            <button className="btn btn-danger" >
+            <button className="btn btn-danger" onClick={() => deleteAccount()} >
               <i className="fas fa-user-minus" /> Delete My Account
             </button>
           </div>

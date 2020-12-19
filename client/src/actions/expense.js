@@ -4,7 +4,8 @@ import {
     REMOVE_TRANSACTION,
     ADD_EXPENSE,
     MONTH_PREVIEW,
-    GET_EXPENSES
+    GET_EXPENSES,
+    UPDATE_EXPENSE
   } from "./types";
 
   import api from '../utils/api';
@@ -17,10 +18,10 @@ import {
     };
   };
  
-  export const getExpenses = id => async dispatch => {
+  export const getExpenses = () => async dispatch => {
     try {
-      const res = await api.get(`/expense/all/${id}`);
-
+      let res = await api.get('/expense/all');
+    
       dispatch({
         type: GET_EXPENSES,
         payload: res.data
@@ -29,6 +30,21 @@ import {
       dispatch({
         type: GET_ERRORS,
         payload: { msg: err.response.statusText, status: err.response.status }
+      });
+    }
+  }
+  export const monthPreview = () => async dispatch => {
+    try {
+      let res = await api.get('/expense/monthPreview');
+
+      dispatch({
+        type: MONTH_PREVIEW,
+        payload: res.data
+      })
+    } catch (err) {
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
       });
     }
   }
@@ -51,6 +67,22 @@ import {
       }
   };
   
+  export const updateExpense = (id, formData) => async dispatch => {
+    try {
+      const res = await api.put(`/expense/${id}`, formData);
+      console.log(res.data);
+      dispatch({
+        type: UPDATE_EXPENSE,
+        payload: res.data
+      });
+      dispatch(setAlert('Expense Updated', 'success'));
+    } catch (err) {
+      dispatch({
+        type: GET_ERRORS,
+        payload: { msg: err.response.statusText, status: err.response.status }
+      });
+    }
+  }
   
   export const deleteTransaction = id => async dispatch => {
     try {
@@ -70,21 +102,7 @@ import {
       }
   };
   
-  export const monthPreview = () => async dispatch => {
-    try {
-      let res = await api.get('/expense/monthPreview');
-
-      dispatch({
-        type: MONTH_PREVIEW,
-        payload: res.data
-      })
-    } catch (err) {
-      dispatch({
-        type: GET_ERRORS,
-        payload: err.response.data
-      });
-    }
-  }
+  
   // export const getErrors = errors => {
   //   return {
   //     type: GET_ERRORS,
