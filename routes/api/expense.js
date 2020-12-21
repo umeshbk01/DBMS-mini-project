@@ -105,6 +105,24 @@ try {
     res.status(500).send('Server Error');
 }
 })
+router.get('/yearlyExpense', auth, async (req, res) => {
+  const date = new Date(), y = date.getFullYear();
+  const firstDay = new Date(y, 0, 1);
+  const lastDay = new Date(y, 12, 0);
+  try {
+      let monthlyExpense = await Expense.aggregate( [
+        { $match: { createdAt: { $gte: firstDay, $lt: lastDay }, user: mongoose.Types.ObjectId(req.user.id) }},
+        { $group: { _id: {$month: "$createdAt"}, totalSpent: {$sum: "$amount"} } },
+        { $project: {x: '$_id', y: '$totalSpent'}}
+      ]).exec();
+      res.json({ monthExp : monthlyExpense });
+  } catch (err) {
+    console.log(err)
+    return res.status(400).json({
+      error: errorHandler.getErrorMessage(err)
+    })
+  }
+})
 
 router.get('/monthPreview', auth, async (req, res) => {
     const date = new Date(), y = date.getFullYear(), m = date.getMonth()
