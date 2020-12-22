@@ -44,7 +44,9 @@ const AddExpense = ({ addExpense }) => {
   return (
       <Card className="card2">
           <CardContent>
-              <Typography type="headline" component="h2" className="title">Add Your Expense here...</Typography>
+          <div className='dash2'>
+              Add Expense
+              </div>
               <br />
               <form className="form-group-ADDEXP" onSubmit={onSubmit}>
                   <div className="ADDEXP-select">

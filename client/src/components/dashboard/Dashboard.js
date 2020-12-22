@@ -18,16 +18,15 @@ const Dashboard = ({
 
   return (
     <Fragment>
-      <div class= "bg-dash">
-        
-      </div>
-      <div class= "dash">
-    <h1>
-      <p className="lead">
+      <p className='dash-head'>
+      <div class= "dash2">
+   
+     
         <i className="fas fa-user" /> Welcome, {user && user.name}
-      </p>
-      </h1>
+      
+  
       </div>
+      </p>
       {profile !== null ? (
         <Fragment>
           <DashboardActions />

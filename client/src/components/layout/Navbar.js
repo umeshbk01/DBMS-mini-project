@@ -50,7 +50,7 @@ const Navbar = ({ getProfileById, auth: { isAuthenticated }, logout, profile: { 
   );
 
   return (
-    <nav className="navbar bg-dark">
+    <nav className="navbar bg-dark1">
       <div className='logo'>
       <h2>
        

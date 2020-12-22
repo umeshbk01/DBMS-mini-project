@@ -55,6 +55,7 @@ img {
   font-size: 3rem;
   line-height: 1.2;
   margin-bottom: 1rem;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .lead {
@@ -70,6 +71,10 @@ img {
 
 .text-primary {
   color: var(--primary-color);
+}
+.text-secondary {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  color: #fff;
 }
 
 .text-dark {
@@ -102,8 +107,8 @@ img {
   padding: 3rem 0;
 }
 .dash-btn2{
-  margin-top: -25px;
-  margin-left:130px ;
+  margin-top: -33px;
+  margin-left:150px ;
 }
 /* Margin */
 .m {
@@ -142,6 +147,7 @@ img {
   cursor: pointer;
   margin-right: 0.5rem;
   transition: all 0.1s ease-in;
+  transition: background 0.8s;
   outline: none;
   box-shadow: 0 3px 0 rgb(189, 186, 186);
 }
@@ -164,7 +170,6 @@ img {
 }
 
 .btn-primary,
-.bg-primary,
 .badge-primary,
 .alert-primary {
   background: var(--primary-color);
@@ -172,9 +177,20 @@ img {
   border-radius: 24px;
   
 }
+.bg-primary{
+  background: #ec6a00;
+  color: #fff;
+  opacity: 0.8;
+}
+.bg-light{
+  background: #e64d11a1;
+  color: #333;
+  opacity: 0.9;
+  padding: 0.2rem 1.2rem;
+  font-weight: bold;
+}
 
 .btn-light,
-.bg-light,
 .badge-light,
 .alert-light {
   background: var(--light-color);
@@ -190,7 +206,18 @@ img {
 .alert-dark {
   background: var(--dark-color);
   color: #fff;
+  border-radius: 24px;
+  padding: 0.2rem 1.2rem;
+  font-weight: bold;
 }
+.bg-dark1{
+  background: var(--dark-color);
+  color: #fff;
+ 
+  padding: 0.2rem 1.2rem;
+  font-weight: bold;
+}
+
 
 .btn-danger,
 .bg-danger,
@@ -209,16 +236,38 @@ img {
 }
 
 .btn-white,
-.bg-white,
 .badge-white,
 .alert-white {
   background: #fff;
   color: #333;
   border: #ccc solid 1px;
 }
+.bg-white{
+  background: rgb(240, 167, 107);
+  opacity: 0.9;
+  color: #333;
+  border: #ccc solid 1px;
+}
+.bg-white:hover{
+  opacity: 1;
+  transform: translateY(3px);
+  box-shadow: 0 0 0 #696969;
+}
+.btn:active {
+  background-color: #f5aa64;
+  background-size: 100%;
+  transition: background 0s;
+}
+
 
 .btn:hover {
   opacity: 0.8;
+  transform: translateY(3px);
+  box-shadow: 0 0 0 #696969;
+}
+.bg-light:hover,
+.bg-primary:hover{
+  opacity: 1;
   transform: translateY(3px);
   box-shadow: 0 0 0 #696969;
 }
@@ -474,6 +523,10 @@ button {
 
 /*expense overview*/
 
+.dash-head{
+  margin-top: -10px;
+  margin-bottom: 20px;
+}
 .OVERtab{
   margin-top: 40px;
   padding: 14px 10px;
@@ -844,6 +897,23 @@ textarea{
 }
 textarea:focus{
   outline: none;
+}
+
+/*Expenses */
+.epanel{
+  margin: 12px 0;
+    display: flex;
+    background: rgb(228, 215, 215);
+    flex-grow: 1;
+    transition: margin 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+.epanel:hover{
+  opacity: 1;
+  transform: translateY(3px);
+  box-shadow: 0 0 0 #696969;
+}
+.eamount{
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 /* Mobile Styles */
