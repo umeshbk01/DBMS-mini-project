@@ -4,12 +4,15 @@ import {
     REMOVE_TRANSACTION,
     ADD_EXPENSE,
     MONTH_PREVIEW,
+    CATEGORY_EXPENSE,
     GET_EXPENSES,
-    UPDATE_EXPENSE
+    UPDATE_EXPENSE,
+    YEARLY_EXPENSE
   } from "./types";
 
   import api from '../utils/api';
   import { setAlert } from './alert';
+
   
   export const setExpenses = transactions => {
     return {
@@ -33,6 +36,35 @@ import {
       });
     }
   }
+  export const yearlyExpense = () => async dispatch => {
+    try {
+      let res = await api.get('/expense/yearlyExpense');
+      dispatch({
+        type: YEARLY_EXPENSE,
+        payload: res.data
+      })
+
+    } catch (err) {
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      });
+    }
+  }
+  export const categoryExpense = () => async dispatch => {
+    try {
+      let res = await api.get('/expense/categoryExpense');
+      dispatch({
+        type: CATEGORY_EXPENSE,
+        payload: res.data
+      })
+    } catch (err) {
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      });
+    }
+  }
   export const monthPreview = () => async dispatch => {
     try {
       let res = await api.get('/expense/monthPreview');
@@ -42,6 +74,7 @@ import {
         payload: res.data
       })
     } catch (err) {
+      console.log(err);
       dispatch({
         type: GET_ERRORS,
         payload: err.response.data

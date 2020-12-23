@@ -9,7 +9,7 @@ import AddEducation from '../profile-forms/AddEducation';
 import Expenses from '../dashboard/Expenses';
 import Profiles from '../profiles/Profiles';
 import Profile from '../profile/Profile';
-
+import Stats from '../stats/Stats';
 import NotFound from '../layout/NotFound';
 import PrivateRoute from '../routing/PrivateRoute';
 import AddExpense from '../dashboard/AddExpense';
@@ -28,6 +28,7 @@ const Routes = props => {
         <PrivateRoute exact path="/edit-profile" component={ProfileForm} />
         <PrivateRoute exact path="/add-education" component={AddEducation} />
         <PrivateRoute exact path="/expenses/new" component={AddExpense} />
+        <PrivateRoute exact path="/statistics" component={Stats} />
         <PrivateRoute exact path="/expenses/all" component={Expenses} />
         <Route component={NotFound} />
       </Switch>

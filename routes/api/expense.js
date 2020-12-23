@@ -5,7 +5,7 @@ const User = require('./../../models/User');
 const auth = require('./../../middleware/auth');
 const checkObjectId = require('../../middleware/checkObjectId');
 const mongoose = require('mongoose');
-const Profile = require('../../models/Profile');
+
 
 
 router.get('/', auth, async (req, res) => {
@@ -117,10 +117,27 @@ router.get('/yearlyExpense', auth, async (req, res) => {
       ]).exec();
       res.json({ monthExp : monthlyExpense });
   } catch (err) {
-    console.log(err)
-    return res.status(400).json({
-      error: errorHandler.getErrorMessage(err)
-    })
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+})
+
+router.get('/categoryExpense', auth, async (req, res) => {
+  const date = new Date(), y = date.getFullYear(), m = date.getMonth()
+  const firstDay = new Date(y, m, 1)
+  const lastDay = new Date(y, m + 1, 0)
+
+  try {
+    let categoryExpense = await Expense.aggregate([
+      { $match : { createdAt : { $gte : firstDay, $lt: lastDay }, user: mongoose.Types.ObjectId(req.user.id)}},
+      { $group : { _id: {category: "$category"}, totalSpent: {$sum: "$amount"} } },
+      { $group : { _id: "$_id.category", avgSpent: { $avg: "$totalSpent" } } },
+      { $project : { x: '$_id', y: '$avgSpent'}}
+    ]).exec();
+    res.json({categoryExp: categoryExpense})
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
   }
 })
 
@@ -154,10 +171,8 @@ router.get('/monthPreview', auth, async (req, res) => {
   //console.log(expensePreview);
     res.json(expensePreview)
   } catch (err){
-    console.log(err)
-    return res.status(400).json({
-      error: errorHandler.getErrorMessage(err)
-    })
+    console.error(err.message);
+    res.status(500).send('Server Error');
   }
 })
 

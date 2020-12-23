@@ -19,17 +19,22 @@ const ExpenseOverview = ({ monthPreview, expense: { month, loading } }) => {
     
     return (
         loading || month === null ? (<Spinner />) : (
+            <div className="OVERtab">   
         <Card className="class">
-            <Typography variant="h4" className="title2" color="textPrimary" style={{textAlign: 'center'}}>Your Expense</Typography>
+            
+            <Typography variant="h4" className="title2" color="textPrimary" style={{textAlign: 'center'}}>Overview</Typography>
             <div style={{display: 'flex', justifyContent:'center', alignItems: 'center'}}>
-                <Typography variant="h3" className="totalSpent">₹{month.month ? month.month.totalSpent : '0' } <span style={{display: 'block', fontSize: '0.3em'}}>So far this month</span> </Typography>
+                <Typography variant="h3" className="totalSpent" color="primary">${month.month ? month.month.totalSpent : '0' } <span className="day">This month</span> </Typography>
                 <div style={{ margin: '20px 20px 20px 30px' }}>
-                    <Typography variant="h5" className="spent" color="primary">₹{month.today ? month.today.totalSpent : '0'} <span className="day">today</span> </Typography>
-                    <Link to="/expenses/all"><Typography variant="h6">See more</Typography> </Link>
+                    <Typography variant="h5" className="spent" color="primary">${month.today ? month.today.totalSpent : '0'} <span className="day">today</span> </Typography>
+                    <p></p>
+                    <Link to="/expenses/all"><Typography variant="h7">See more</Typography> </Link>
                 </div>
             </div>
+            
             <Divider />
         </Card>
+        </div>
     ))
 }
 

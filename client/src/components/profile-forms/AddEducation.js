@@ -30,20 +30,20 @@ const AddEducation = ({ addEducation, history }) => {
 
   return (
     <Fragment>
-      <h1 className="large text-primary">Add Your Education</h1>
+      <div class='dash2'>Add Your Education</div>
       <p className="lead">
         <i className="fas fa-code-branch" /> Add any school or bootcamp that you
         have attended
       </p>
       <small>* = required field</small>
       <form
-        className="form"
+        className="form-Pro"
         onSubmit={e => {
           e.preventDefault();
           addEducation(formData, history);
         }}
       >
-        <div className="form-group">
+        <div className="form-group-Pro">
           <input
             type="text"
             placeholder="* School or Bootcamp"
@@ -53,7 +53,7 @@ const AddEducation = ({ addEducation, history }) => {
             required
           />
         </div>
-        <div className="form-group">
+        <div className="form-group-Pro">
           <input
             type="text"
             placeholder="* Degree or Certificate"
@@ -63,7 +63,7 @@ const AddEducation = ({ addEducation, history }) => {
             required
           />
         </div>
-        <div className="form-group">
+        <div className="form-group-Pro">
           <input
             type="text"
             placeholder="Field of Study"
@@ -72,11 +72,11 @@ const AddEducation = ({ addEducation, history }) => {
             onChange={onChange}
           />
         </div>
-        <div className="form-group">
+        <div className="form-group-Pro">
           <h4>From Date</h4>
           <input type="date" name="from" value={from} onChange={onChange} />
         </div>
-        <div className="form-group">
+        <div className="form-group-Pro">
           <p>
             <input
               type="checkbox"
@@ -88,7 +88,7 @@ const AddEducation = ({ addEducation, history }) => {
             Current School
           </p>
         </div>
-        <div className="form-group">
+        <div className="form-group-Pro">
           <h4>To Date</h4>
           <input
             type="date"
@@ -98,7 +98,7 @@ const AddEducation = ({ addEducation, history }) => {
             disabled={current}
           />
         </div>
-        <div className="form-group">
+        <div className="form-group-Pro">
           <textarea
             name="description"
             cols="30"

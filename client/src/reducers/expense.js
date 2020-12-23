@@ -3,6 +3,8 @@ import {
     REMOVE_TRANSACTION,
     ADD_EXPENSE,
     MONTH_PREVIEW,
+    CATEGORY_EXPENSE,
+    YEARLY_EXPENSE,
     GET_EXPENSES,
     UPDATE_EXPENSE,
     GET_ERRORS
@@ -10,7 +12,8 @@ import {
   
   const initialState = {
     expenses: [],
-    expense: null,
+    year: [],
+    ecategory: [],
     month: [],
     loading: true,
     error: {}
@@ -52,6 +55,18 @@ import {
             expenses: state.expenses.filter(expense => expense._id !== payload),
             loading: false
         };
+      case YEARLY_EXPENSE:
+        return {
+          ...state,
+          year: payload,
+          loading: false
+        }
+      case CATEGORY_EXPENSE:
+        return {
+          ...state,
+          ecategory: payload,
+          loading: false
+        }
       case MONTH_PREVIEW:
         return {
           ...state,

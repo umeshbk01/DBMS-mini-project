@@ -50,12 +50,14 @@ const Navbar = ({ getProfileById, auth: { isAuthenticated }, logout, profile: { 
   );
 
   return (
-    <nav className="navbar bg-dark">
-      <h1>
-        <Link to="/">
+    <nav className="navbar bg-dark1">
+      <div className='logo'>
+      <h2>
+       
         <i className="fas fa-hand-holding-usd" /> Expense Tracker
-        </Link>
-      </h1>
+      
+      </h2>
+      </div>
       <Fragment>{isAuthenticated ? authLinks : guestLinks}</Fragment>
     </nav>
   );
