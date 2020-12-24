@@ -5,9 +5,7 @@ import { connect } from 'react-redux';
 import Spinner from '../layout/Spinner';
 import ProfileTop from './ProfileTop';
 import ProfileAbout from './ProfileAbout';
-// import ProfileExperience from './ProfileExperience';
 import ProfileEducation from './ProfileEducation';
-// import ProfileGithub from './ProfileGithub';
 import { getProfileById } from '../../actions/profile';
 
 const Profile = ({ getProfileById, profile: { profile }, auth, match }) => {
@@ -37,7 +35,7 @@ const Profile = ({ getProfileById, profile: { profile }, auth, match }) => {
             <div className="profile-exp bg-white p-2">
               <h2 className="text-primary">Address</h2>
               <div>
-                <h4>{profile.Address}</h4>
+                <h4>{profile.address}</h4>
                 <h4>{profile.phoneno}</h4>
               </div>
             </div>

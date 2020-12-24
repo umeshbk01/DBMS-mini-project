@@ -17,7 +17,7 @@ const CategoryExpense = ({ categoryExpense, expense: { ecategory, loading } }) =
     return (
         loading || ecategory === null ? (<Spinner />) : (
             <div>
-            <Typography variant="h5" className="title2">Your Annual Expense By Category</Typography>
+            <Typography variant="h5" className="etitle">Your Annual Expense By Category</Typography>
                 <div style={{width: 550, margin: 'auto'}}>
                 <svg viewBox="0 0 320 320">
                 

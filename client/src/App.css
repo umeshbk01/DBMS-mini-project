@@ -420,8 +420,10 @@ button {
 }
 
 /*Expense*/
-
-
+.etitle{
+  padding:32px;
+  color: #2bbd7e
+}
 
 /* Navbar */
 .navbar {

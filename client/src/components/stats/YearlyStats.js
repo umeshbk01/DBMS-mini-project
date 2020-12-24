@@ -18,7 +18,7 @@ const YearlyStats = ({ yearlyExpense, expense: { year, loading } }) => {
     return (
         loading || year === null ? (<Spinner />) : (
         <div>
-            <Typography variant="h5" className="title2">Your Annual Expenditure</Typography>
+            <Typography variant="h5" className="etitle">Your Annual Expenditure</Typography>
             <VictoryChart
                 theme={VictoryTheme.material}
                 domainPadding={10}
