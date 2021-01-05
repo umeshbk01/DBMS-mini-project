@@ -60,7 +60,7 @@ const ProfileForm = ({
         <small className="form-text-Pro">
             Give us an idea of where you are at in your career
           </small>
-          <select class="status" value={status} onChange={onChange}>
+          <select class="status" name="status" value={status} onChange={onChange}>
             <option>* Select Professional Status</option>
             <option value="Developer">Developer</option>
             <option value="Junior Developer">Junior Developer</option>

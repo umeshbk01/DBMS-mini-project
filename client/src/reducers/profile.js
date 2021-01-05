@@ -8,6 +8,7 @@ import {
 
 const initialState = {
   id:'',
+  status:'',
   profile: null,
   profiles: [],
   loading: true,
@@ -23,6 +24,7 @@ export default function (state = initialState, action) {
       return {
         ...state,
         id:payload._id,
+        status: payload.status,
         profile: payload,
         loading: false
       };

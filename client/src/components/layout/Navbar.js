@@ -5,10 +5,38 @@ import PropTypes from 'prop-types';
 import { logout } from '../../actions/auth';
 import { getProfileById } from '../../actions/profile';
 
-const Navbar = ({ getProfileById, auth: { isAuthenticated }, logout, profile: { id }, match }) => {
+const Navbar = ({ getProfileById, auth: { isAuthenticated }, logout, profile: { id, status } }) => {
   // useEffect(() => {
   //   getProfileById(match.params.id);
   // }, [getProfileById, match.params.id]);
+  const executiveLinks = (
+    <ul>
+    <li>
+      <Link to={'/profiles'}>Profiles</Link>
+    </li>
+      <li>
+        <Link to="/statistics">Stats</Link>
+      </li>
+      <li>
+        <Link to="/expenses/new">Add Expense</Link>
+      </li>
+      <li>
+        <Link to="/expenses/all">Expenses</Link>
+      </li>
+      <li>
+        <Link to="/dashboard">
+          <i className="fas fa-user" />{' '}
+          <span className="hide-sm">Dashboard</span>
+        </Link>
+      </li>
+      <li>
+        <a onClick={logout} href="#!">
+          <i className="fas fa-sign-out-alt" />{' '}
+          <span className="hide-sm">Logout</span>
+        </a>
+      </li>
+    </ul>
+  )
   const authLinks = (
     <ul>
     <li>
@@ -58,7 +86,7 @@ const Navbar = ({ getProfileById, auth: { isAuthenticated }, logout, profile: { 
       
       </h2>
       </div>
-      <Fragment>{isAuthenticated ? authLinks : guestLinks}</Fragment>
+      <Fragment>{isAuthenticated ? (status === "executive" ? executiveLinks : authLinks) : guestLinks}</Fragment>
     </nav>
   );
 };

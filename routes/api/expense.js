@@ -128,14 +128,14 @@ router.get('/categoryExpense', auth, async (req, res) => {
   const lastDay = new Date(y, 12, 0)
 
   try {
-    console.log(req.user.id);
+    // console.log(req.user.id);
     let categoryExpense = await Expense.aggregate([
       { $match : { createdAt : { $gte : firstDay, $lt: lastDay }, user: mongoose.Types.ObjectId(req.user.id)}},
       { $group : { _id: {category: "$category"}, totalSpent: {$sum: "$amount"} } },
       { $group : { _id: "$_id.category", avgSpent: { $avg: "$totalSpent" } } },
       { $project : { x: '$_id', y: '$avgSpent'}}
     ]).exec();
-    console.log(categoryExpense);
+    // console.log(categoryExpense);
     res.json({categoryExp: categoryExpense})
   } catch (err) {
     console.error(err.message);

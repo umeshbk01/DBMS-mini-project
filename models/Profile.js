@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const validator = require('mongoose-validator');
 
 // Profile - designation,
 //  Phone no
@@ -24,8 +25,15 @@ const ProfileSchema = new mongoose.Schema({
     type: String
   },
   phoneno: {
-    type: Number,
-    min: [10, 'Phone number should be 10 digits']
+    type: String,
+    validate: {
+      validator: (v) => {
+        let regex = /^\d{10}$/
+        return regex.test(v);
+      },
+      message: 'Not a valid phone number!'
+    },
+    required: [true, 'User phone number required']
   },
   education: [
     {
@@ -66,5 +74,6 @@ const ProfileSchema = new mongoose.Schema({
     default: Date.now
   }
 });
+
 
 module.exports = mongoose.model('profile', ProfileSchema);
