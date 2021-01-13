@@ -1,0 +1,4 @@
+{
+    "mongoURI": "mongodb+srv://admin-umesh:umesh@devconn.rjwak.mongodb.net/expensetrackerv2?retryWrites=true&w=majority",
+    "jwtSecret": "gocoronago"
+}
