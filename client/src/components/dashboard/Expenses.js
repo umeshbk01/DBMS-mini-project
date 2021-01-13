@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
-import ExpansionPanel from '@material-ui/core/ExpansionPanel';
-import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
+import Accordion from '@material-ui/core/ExpansionPanel';
+import AccordionSummary from '@material-ui/core/ExpansionPanelSummary';
 import Divider from '@material-ui/core/Divider';
-import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
+import AccordionDetails from '@material-ui/core/ExpansionPanelDetails';
 import Edit from '@material-ui/icons/Edit';
 import Typography from '@material-ui/core/Typography';
 import { connect } from 'react-redux';
@@ -19,8 +19,8 @@ const Expenses = ({ getExpenses, expense: { expenses }}) => {
         <div>
         {expenses.map((exp, index) => {
             return <span key={index}>
-            <ExpansionPanel className='epanel'>
-                    <ExpansionPanelSummary expandIcon={<Edit />}>
+            <Accordion className='epanel'>
+                    <AccordionSummary expandIcon={<Edit />}>
                         <div className="einfo">
                         <Typography className="eamount">₹ {exp.amount}</Typography><Divider style={{marginTop: 4, marginBottom: 4}}/>
                         <Typography>
@@ -37,13 +37,13 @@ const Expenses = ({ getExpenses, expense: { expenses }}) => {
                                     {exp.comment}
                                 </Typography>
                             </div>
-                    </ExpansionPanelSummary>
+                    </AccordionSummary>
             
             <Divider />
-            <ExpansionPanelDetails style={{display: 'block'}}>
+            <AccordionDetails style={{display: 'block'}}>
                 <ExpenseUpdate key={exp._id} expense={exp} />
-            </ExpansionPanelDetails>
-            </ExpansionPanel>
+            </AccordionDetails>
+            </Accordion>
             </span>
         })}
         </div>
