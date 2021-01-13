@@ -32,7 +32,7 @@ import {
     } catch (err) {
       dispatch({
         type: GET_ERRORS,
-        payload: { msg: err.response.statusText, status: err.response.status }
+        payload: err.response.data
       });
     }
   }
