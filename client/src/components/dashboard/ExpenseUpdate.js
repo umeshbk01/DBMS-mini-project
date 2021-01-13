@@ -35,7 +35,7 @@ const ExpenseUpdate = ({
     },[]);
 
     const {
-        _id,
+       // _id,
         category,
         amount,
         comment,

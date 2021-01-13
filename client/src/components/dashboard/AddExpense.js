@@ -1,14 +1,10 @@
-import React, { Component, useState } from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { addExpense } from '../../actions/expense';
 import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
-import TextField from '@material-ui/core/TextField';
-import Typography from '@material-ui/core/Typography';
-
 
 let date = new Date();
 
